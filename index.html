@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Spinney External Works — Project Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0d9488; --teal-dark:#0f766e; --teal-light:#5eead4;
+  --gold:#f59e0b; --gray-dark:#1f2937; --gray-med:#6b7280;
+  --gray-light:#f3f4f6; --white:#fff;
+  --font-head:'Merriweather',serif; --font-body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);font-size:1rem;line-height:1.65;color:var(--gray-dark);background:var(--white)}
+.container{max-width:1000px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--font-head);line-height:1.25}
+a{color:var(--teal);text-decoration:none}
+a:hover{color:var(--teal-dark)}
+
+/* Header */
+header{background:var(--teal-dark);color:var(--white);padding:2.5rem 0 2rem}
+header h1{font-size:2rem;font-weight:900;color:var(--white)}
+header .scope{color:var(--teal-light);margin-top:.5rem;max-width:46rem}
+header .updated{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.12);border-radius:999px;padding:.25rem .9rem;font-size:.85rem}
+
+section{padding:2.5rem 0}
+section h2{font-size:1.4rem;margin-bottom:1.25rem;border-bottom:3px solid var(--gold);display:inline-block;padding-bottom:.25rem}
+.alt{background:var(--gray-light)}
+
+/* Status dashboard */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.card{background:var(--white);border:1px solid #e5e7eb;border-left:4px solid var(--teal);border-radius:8px;padding:1rem 1.1rem}
+.alt .card{box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h3{font-size:1.02rem;margin-bottom:.35rem}
+.card p{font-size:.9rem;color:var(--gray-med)}
+.pill{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-radius:999px;padding:.15rem .65rem;margin-bottom:.5rem}
+.p-notstarted{background:#e5e7eb;color:#374151}
+.p-progress{background:#ccfbf1;color:var(--teal-dark)}
+.p-complete{background:var(--teal);color:var(--white)}
+.p-blocked{background:#fee2e2;color:#991b1b}
+.p-floating{background:#fef3c7;color:#92400e}
+
+/* Key dates */
+.dates{list-style:none}
+.dates li{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid #e5e7eb;align-items:baseline}
+.dates .d{flex:0 0 9.5rem;font-weight:600;color:var(--teal-dark);font-size:.92rem}
+.dates .who{margin-left:auto;font-size:.8rem;color:var(--gray-med);white-space:nowrap}
+.dates li.hol .d{color:var(--gray-med)}
+.dates li.action .d{color:var(--gold)}
+
+/* Downloads */
+.dl{display:flex;flex-direction:column;gap:.75rem;max-width:40rem}
+.dl a{display:flex;justify-content:space-between;gap:1rem;background:var(--white);border:1px solid #e5e7eb;border-radius:8px;padding:.85rem 1.1rem;font-weight:500}
+.dl a:hover{border-color:var(--teal)}
+.dl .meta{color:var(--gray-med);font-weight:400;font-size:.85rem;white-space:nowrap}
+.dl .soon{opacity:.55;border-style:dashed;cursor:default}
+
+/* Contacts & decisions tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;background:var(--teal-dark);color:var(--white);padding:.55rem .8rem;font-weight:600}
+td{padding:.55rem .8rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+tr:nth-child(even) td{background:var(--gray-light)}
+.tag{font-size:.72rem;font-weight:600;color:var(--gray-med);text-transform:uppercase;letter-spacing:.04em}
+
+footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem 0;text-align:center}
+
+@media (max-width:600px){
+  header h1{font-size:1.5rem}
+  .dates li{flex-wrap:wrap}
+  .dates .who{margin-left:0;flex-basis:100%}
+  table{font-size:.82rem}
+  th,td{padding:.45rem .5rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Spinney External Works</h1>
+    <p class="scope">Seven workstreams, one page: chimney, coping stones, drainage, decking, driveway channel, guttering and fencing. Everything the team needs — status, dates, files, contacts — lives here.</p>
+    <span class="updated">Last updated: Monday 13 July 2026 · Week 1</span>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Workstream status</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="pill p-notstarted">Not started</span>
+        <h3>1 · Chimney repair</h3>
+        <p>Scaffold A up 15–16 Jul. Cut render to substrate, realign, re-render. First in the queue — target completion before 22 Aug.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-notstarted">Not started</span>
+        <h3>2 · Coping stones repair</h3>
+        <p>Scaffold B (separate structure). Cut back, lead flashing, replace stones, make watertight. Follows chimney.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-notstarted">Not started</span>
+        <h3>3 · Drainage — soakaway</h3>
+        <p>Back garden, side (a). Partial deck demolition, new pipework off downpipes. Not gated on scaffold removal (Luke to confirm footings 15 Jul).</p>
+      </div>
+      <div class="card">
+        <span class="pill p-notstarted">Not started</span>
+        <h3>4 · Decking replacement</h3>
+        <p>Materials ordered and paid in full (V4, 9 Jul). Two halves, strict gate segregation: side (a) via gate (a), side (b) via gate (b). No materials over new Millboard. Starts after scaffold strike.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-floating">Floating</span>
+        <h3>5 · Driveway channel</h3>
+        <p>Connect water-softener discharge to natural drainage; lift and reinstate cobbles. Prime rainy-day pivot — scheduled opportunistically.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-notstarted">Not started</span>
+        <h3>6 · Guttering</h3>
+        <p>Back of house from scaffold (before strike); front of house is ladder work and sits in the rainy-day pool.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-floating">Floating</span>
+        <h3>7 · Fencing</h3>
+        <p>Existing fence to be repaired and moved onto the correct boundary (not replaced). Spurring along side (b) must complete before decking side (b) begins. Relocation route depends on the TPO appeal; tree works are handled by an external company outside this project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <h2>Key dates</h2>
+    <ul class="dates">
+      <li><span class="d">Wed 15 – Thu 16 Jul</span><span>Scaffold A + B erected (incl. footing points through decking)</span><span class="who">Trevor</span></li>
+      <li class="hol"><span class="d">25 Jul – 1 Aug</span><span>Luke on holiday — no site work</span><span class="who">—</span></li>
+      <li><span class="d">Thu 20 Aug</span><span>Stage Gate 1 — at-height works sign-off</span><span class="who">Lara · Neels · Ryan</span></li>
+      <li><span class="d">Fri 21 Aug</span><span>Scaffold strike</span><span class="who">Trevor</span></li>
+      <li class="hol"><span class="d">22 – 29 Aug</span><span>Luke on holiday — no site work (plus bank holiday Mon 31 Aug)</span><span class="who">—</span></li>
+      <li class="action"><span class="d">Tue 25 Aug</span><span>Notify V4 Flooring — request decking delivery (14 days' notice)</span><span class="who">Ryan</span></li>
+      <li><span class="d">Thu 3 – Fri 4 Sep</span><span>Decking materials delivered (6t+ Millboard &amp; substructure)</span><span class="who">V4 Flooring</span></li>
+      <li><span class="d">Tue 8 Sep</span><span>Decking side (a) begins — gate (a) access only</span><span class="who">Luke +1</span></li>
+      <li><span class="d">w/c 12 Oct</span><span>Decking side (b) completes (best case) → Gate 3 sign-off</span><span class="who">Lara · Neels · Ryan</span></li>
+      <li><span class="d">Fri 23 Oct</span><span>Project completion — snagging &amp; final sign-off (best case)</span><span class="who">All</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Downloads</h2>
+    <div class="dl">
+      <a href="files/Spinney_Gantt_v2.xlsx">Project Gantt &amp; task register (Excel)<span class="meta">v2 · 13 Jul 2026</span></a>
+      <a href="files/Decking_plan.pdf">Decking design plan (PDF)<span class="meta">pre-final · orange = upper level, green = lower</span></a>
+      <a href="files/Spinney_Budget_Tracker_v1.xlsx">Budget &amp; invoice tracker (Excel)<span class="meta">v1 · 13 Jul 2026</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <h2>Contacts</h2>
+    <table>
+      <tr><th>Name</th><th>Role</th><th>Team</th><th>Phone</th><th>Email</th></tr>
+      <tr><td>Lara</td><td>Key Decision Maker &amp; Budget Holder</td><td><span class="tag">Family</span></td><td>ADD-PHONE</td><td>ADD-EMAIL</td></tr>
+      <tr><td>Neels</td><td>Project Manager</td><td><span class="tag">Family</span></td><td>ADD-PHONE</td><td>ADD-EMAIL</td></tr>
+      <tr><td>Ryan</td><td>Office support &amp; supplementary decision maker</td><td><span class="tag">Family</span></td><td>ADD-PHONE</td><td>ADD-EMAIL</td></tr>
+      <tr><td>Luke</td><td>Chief builder, head of company (LG Building and Roofing Ltd)</td><td><span class="tag">External</span></td><td>ADD-PHONE</td><td>ADD-EMAIL</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Decisions log</h2>
+    <table>
+      <tr><th style="width:8.5rem">Date</th><th>Decision</th><th style="width:10rem">Made by</th></tr>
+      <tr><td>13 Jul 2026</td><td>Both scaffold towers erected together (15–16 Jul) and remain until Gate 1 sign-off, then struck.</td><td>Luke / family</td></tr>
+      <tr><td>13 Jul 2026</td><td>One phase at a time: whole crew works a single phase; planning basis is Luke +1 (extra hands are upside, never assumed).</td><td>Family</td></tr>
+      <tr><td>13 Jul 2026</td><td>Decking split into sides (a) and (b) with exclusive gate access per side — no material movement over newly laid Millboard. Garden segregation fencing keeps the garden usable through Summer.</td><td>Family / Luke</td></tr>
+      <tr><td>13 Jul 2026</td><td>V4 Flooring to receive 14 days' notice before decking materials are required onsite.</td><td>Ryan</td></tr>
+      <tr><td>13 Jul 2026</td><td>Fence relocation gated on TPO appeal outcome; spurring proceeds independently — and must complete along side (b) before decking side (b) starts. Tree works handled by an external company, outside this project's scope and budget.</td><td>Family</td></tr>
+      <tr><td>9 Jul 2026</td><td>Decking materials paid in full — £32,228.99 (V4 Wood Flooring, ref V4FQ-15584).</td><td>Lara</td></tr>
+      <tr><td>1 Jul 2026</td><td>Fence to be repaired and moved onto the correct boundary rather than replaced.</td><td>Lara / Luke</td></tr>
+      <tr><td>1 Jul 2026</td><td>Contingency of ~£5,000 agreed: fence move/repair labour, soakaway fix before decking, drainage by the garage, additional curved-decking labour, cement and bricks.</td><td>Lara / Luke</td></tr>
+      <tr><td>1 Jul 2026</td><td>Decking order amended to all Ashwood, with flexible bullnose boards for the curved upper level.</td><td>Lara / Luke / Jon (V4)</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <img src="rb-logo-white.png" alt="RB" width="36" height="36" style="opacity:.85;margin-bottom:.5rem">
+    <p>Private project page — not indexed, not linked. Questions or amends: Ryan.</p>
+  </div>
+</footer>
+
+</body>
+</html>
