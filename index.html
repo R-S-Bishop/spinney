@@ -67,6 +67,27 @@ td{padding:.55rem .8rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
 tr:nth-child(even) td{background:var(--gray-light)}
 .tag{font-size:.72rem;font-weight:600;color:var(--gray-med);text-transform:uppercase;letter-spacing:.04em}
 
+/* Inline Gantt */
+.gantt-caption{font-size:.85rem;color:var(--gray-med);margin-bottom:.75rem}
+.gantt-wrap{overflow-x:auto;border:1px solid #e5e7eb;border-radius:8px;position:relative;background:var(--white)}
+.gantt{display:grid;font-size:.78rem;min-width:max-content;position:relative}
+.g-cell{border-bottom:1px solid #f1f3f5;border-right:1px solid #f8f9fa;height:34px}
+.g-label{position:sticky;left:0;background:var(--white);z-index:2;display:flex;align-items:center;padding:0 .6rem;font-weight:500;border-right:1px solid #e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-head{position:sticky;top:0;background:var(--teal-dark);color:var(--white);font-weight:600;display:flex;align-items:center;justify-content:center;height:38px;z-index:1}
+.g-head.g-label{z-index:3;background:var(--teal-dark)}
+.g-phase{background:var(--teal);color:var(--white);font-weight:600;z-index:2}
+.g-phase-fill{background:var(--teal)}
+.g-hol{background:var(--gray-light)}
+.g-bar{position:relative}
+.g-bar::after{content:"";position:absolute;left:8%;right:8%;top:9px;bottom:9px;background:var(--teal);border-radius:4px}
+.g-bar.g-hol::after{opacity:.45}
+.g-ms{position:relative}
+.g-ms::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);border-radius:2px}
+.g-today{position:absolute;top:38px;bottom:0;width:2px;background:var(--gold);z-index:1;pointer-events:none}
+.g-today::before{content:"today";position:absolute;top:-1px;left:4px;font-size:.62rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em}
+.g-float{margin-top:1rem;font-size:.88rem}
+.g-float li{padding:.3rem 0;border-bottom:1px solid #f1f3f5;list-style:none;color:var(--gray-med)}
+.g-float li strong{color:var(--gray-dark);font-weight:600}
 footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem 0;text-align:center}
 
 @media (max-width:600px){
@@ -129,6 +150,15 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
         <p>Existing fence to be repaired and moved onto the correct boundary (not replaced). Spurring along side (b) must complete before decking side (b) begins. Relocation route depends on the TPO appeal; tree works are handled by an external company outside this project.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <h2>Timeline</h2>
+    <p class="gantt-caption">Reflects Gantt v2 &middot; 13 Jul 2026. Grey columns = Luke's holidays (w/c 27 Jul, w/c 24 Aug); Mon 31 Aug is a bank holiday. Gold diamonds = stage gates and milestones. Scroll sideways for later weeks &mdash; the full task register lives in the Excel download.</p>
+    <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+    <ul class="g-float" id="gfloat"></ul>
   </div>
 </section>
 
@@ -199,5 +229,115 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
   </div>
 </footer>
 
+<script>
+(function(){
+  var DAY = 86400000;
+  var G = {
+    weekStart: new Date('2026-07-13T00:00:00'),
+    weeks: 16,
+    holidays: ['2026-07-27','2026-08-24'],
+    rows: [
+      {phase:'Phase 1 — Scaffold & at-height works'},
+      {id:'1.0', label:'Site setup & segregation fencing', s:'2026-07-13', e:'2026-07-14'},
+      {id:'1.1', label:'Scaffold A + B erection (Trevor)', s:'2026-07-15', e:'2026-07-16'},
+      {id:'1.2', label:'Chimney repair', s:'2026-07-16', e:'2026-07-24'},
+      {id:'1.3', label:'Coping stones repair', s:'2026-08-03', e:'2026-08-14'},
+      {id:'1.4', label:'Back-of-house gutters', s:'2026-08-17', e:'2026-08-19'},
+      {id:'G1', label:'Gate 1 — at-height sign-off', s:'2026-08-20', ms:true},
+      {id:'1.5', label:'Scaffold strike', s:'2026-08-21', e:'2026-08-21'},
+      {phase:'Phase 2 — Groundworks & decking'},
+      {id:'M1', label:'Notify V4 — request delivery (Ryan)', s:'2026-08-25', ms:true},
+      {id:'2.1', label:'Soakaway drainage, side (a)', s:'2026-09-01', e:'2026-09-07'},
+      {id:'2.2', label:'V4 delivery — decking materials', s:'2026-09-03', e:'2026-09-04'},
+      {id:'2.3', label:'Decking side (a) — gate (a) access', s:'2026-09-08', e:'2026-09-24'},
+      {id:'G2', label:'Gate 2 — decking (a) sign-off', s:'2026-09-25', ms:true},
+      {id:'2.4', label:'Decking side (b) — gate (b) access', s:'2026-09-28', e:'2026-10-14'},
+      {id:'G3', label:'Gate 3 — decking (b) sign-off', s:'2026-10-15', ms:true},
+      {id:'2.5', label:'Bonus — BBQ & shed area (offcuts)', s:'2026-10-16', e:'2026-10-20'},
+      {id:'G4', label:'Completion — final sign-off', s:'2026-10-23', ms:true}
+    ],
+    floating: [
+      ['3.1','Driveway channel (water softener waste)','rainy-day pivot, any time'],
+      ['3.2','Front-of-house gutters (ladder work)','rainy-day pivot, any time'],
+      ['3.3','Fence spurring, side (b)','must finish before decking (b) — by 25 Sep'],
+      ['3.4','Tree / bush clearing','external company, outside project'],
+      ['3.5','Fence relocation','after external tree works + TPO decision'],
+      ['T1','TPO appeal decision','date TBC']
+    ]
+  };
+
+  var LABEL_W = 168, WEEK_W = 46;
+  var el = document.getElementById('gantt');
+  el.style.gridTemplateColumns = LABEL_W + 'px repeat(' + G.weeks + ',' + WEEK_W + 'px)';
+
+  function wk(i){ return new Date(G.weekStart.getTime() + i*7*DAY); }
+  function isHol(i){
+    var d = wk(i), m = ('0'+(d.getMonth()+1)).slice(-2), day = ('0'+d.getDate()).slice(-2);
+    return G.holidays.indexOf(d.getFullYear()+'-'+m+'-'+day) > -1;
+  }
+  function fmt(d){ return d.getDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]; }
+
+  // header row
+  var h = document.createElement('div');
+  h.className = 'g-cell g-head g-label'; h.textContent = 'Week commencing';
+  el.appendChild(h);
+  for (var i = 0; i < G.weeks; i++){
+    var c = document.createElement('div');
+    c.className = 'g-cell g-head'; c.textContent = fmt(wk(i));
+    el.appendChild(c);
+  }
+
+  // body rows
+  G.rows.forEach(function(row){
+    if (row.phase){
+      var p = document.createElement('div');
+      p.className = 'g-cell g-label g-phase'; p.textContent = row.phase;
+      el.appendChild(p);
+      for (var i = 0; i < G.weeks; i++){
+        var c = document.createElement('div');
+        c.className = 'g-cell g-phase-fill';
+        el.appendChild(c);
+      }
+      return;
+    }
+    var lab = document.createElement('div');
+    lab.className = 'g-cell g-label';
+    lab.textContent = row.id + ' · ' + row.label;
+    lab.title = row.label;
+    el.appendChild(lab);
+    var s = new Date(row.s + 'T00:00:00');
+    var e = new Date((row.e || row.s) + 'T00:00:00');
+    for (var i = 0; i < G.weeks; i++){
+      var c = document.createElement('div');
+      var cls = 'g-cell';
+      var wStart = wk(i), wEnd = new Date(wStart.getTime() + 6*DAY);
+      if (isHol(i)) cls += ' g-hol';
+      if (s <= wEnd && e >= wStart) cls += row.ms ? ' g-ms' : ' g-bar';
+      c.className = cls;
+      c.title = row.id + ' · ' + row.label + ' — ' + fmt(s) + (row.e && row.e !== row.s ? ' to ' + fmt(e) : '');
+      el.appendChild(c);
+    }
+  });
+
+  // floating pool
+  var fl = document.getElementById('gfloat');
+  G.floating.forEach(function(f){
+    var li = document.createElement('li');
+    li.innerHTML = '<strong>' + f[0] + ' · ' + f[1] + '</strong> — ' + f[2];
+    fl.appendChild(li);
+  });
+
+  // today line
+  var today = new Date(); today.setHours(0,0,0,0);
+  var end = new Date(G.weekStart.getTime() + G.weeks*7*DAY);
+  if (today >= G.weekStart && today < end){
+    var days = (today - G.weekStart) / DAY;
+    var line = document.createElement('div');
+    line.className = 'g-today';
+    line.style.left = (LABEL_W + (days/7) * WEEK_W) + 'px';
+    el.appendChild(line);
+  }
+})();
+</script>
 </body>
 </html>
