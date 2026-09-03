@@ -44,6 +44,7 @@ section h2{font-size:1.4rem;margin-bottom:1.25rem;border-bottom:3px solid var(--
 .p-complete{background:var(--teal);color:var(--white)}
 .p-blocked{background:#fee2e2;color:#991b1b}
 .p-floating{background:#fef3c7;color:#92400e}
+.p-cancelled{background:#f3f4f6;color:#9ca3af;text-decoration:line-through}
 
 /* Key dates */
 .dates{list-style:none}
@@ -75,12 +76,13 @@ tr:nth-child(even) td{background:var(--gray-light)}
 .g-label{position:sticky;left:0;background:var(--white);z-index:2;display:flex;align-items:center;padding:0 .6rem;font-weight:500;border-right:1px solid #e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .g-head{position:sticky;top:0;background:var(--teal-dark);color:var(--white);font-weight:600;display:flex;align-items:center;justify-content:center;height:38px;z-index:1}
 .g-head.g-label{z-index:3;background:var(--teal-dark)}
+.g-tbc{color:var(--gray-med);font-style:italic}
 .g-phase{background:var(--teal);color:var(--white);font-weight:600;z-index:2;overflow:visible;text-overflow:clip}
 .g-phase-fill{background:var(--teal)}
 .g-hol{background:var(--gray-light)}
 .g-bar{position:relative}
 .g-bar::after{content:"";position:absolute;left:8%;right:8%;top:9px;bottom:9px;background:var(--teal);border-radius:4px}
-.g-bar.g-hol::after{opacity:.45}
+.g-bar-est::after{background:transparent;border:2px dashed var(--teal);opacity:.7}
 .g-ms{position:relative}
 .g-ms::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);border-radius:2px}
 .g-today{position:absolute;top:38px;bottom:0;width:2px;background:var(--gold);z-index:1;pointer-events:none}
@@ -106,7 +108,7 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
   <div class="container">
     <h1>Spinney External Works</h1>
     <p class="scope">Seven workstreams, one page: chimney, coping stones, drainage, decking, driveway channel, guttering and fencing. Everything the team needs — status, dates, files, contacts — lives here.</p>
-    <span class="updated">Last updated: Wednesday 19 August 2026 · Week 5</span>
+    <span class="updated">Last updated: Thursday 3 September 2026 · Week 8</span>
   </div>
 </header>
 
@@ -125,14 +127,14 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
         <p>Sealant applied 18 Aug — complete. Labour fully settled (cash + invoiced). Scaffold struck 18 Aug, final payment settled.</p>
       </div>
       <div class="card">
-        <span class="pill p-progress">In progress</span>
+        <span class="pill p-cancelled">Cancelled</span>
         <h3>3 · Drainage — soakaway</h3>
-        <p>Back garden, side (a). Investigation works carried out 17 Aug, more expected this week. Confirmed not gated on scaffold removal.</p>
+        <p>Cancelled 1 Sep — cost-benefit ratio wasn't there. The investigation work already done (18 Aug) carries forward into the pipe investigation instead (see Decking).</p>
       </div>
       <div class="card">
         <span class="pill p-progress">In progress</span>
         <h3>4 · Decking replacement</h3>
-        <p>Materials paid in full (V4, 9 Jul). Substructure side (b) under way from 17 Aug — old boards and substructure out, new brick pier supports going in. Main board-laying still to come, after gutters and Luke's holiday.</p>
+        <p>Materials paid in full (V4, 9 Jul). Substructure now under way on both sides in parallel: side (b) has both lower and upper layers going in; side (a) is being excavated (digger onsite from 3 Sep) to investigate the chimney waste pipe and widen the decking area, with earth reused as buttress-wall infill on side (b). Board-laying is now tracked as its own step, once two new gates clear: gutters/slate repairs/render soft wash, and the tap/pipework check with weed-stop membrane. Labour stage 1 (25%) settled 20 Aug.</p>
       </div>
       <div class="card">
         <span class="pill p-floating">Floating</span>
@@ -142,7 +144,7 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
       <div class="card">
         <span class="pill p-notstarted">Not started</span>
         <h3>6 · Guttering</h3>
-        <p>Scaffold struck 18 Aug — back gutters now unblocked, scheduled 19–21 Aug. Front gutters and tile repairs unaffected throughout. Both included in Luke's roof-work price — no separate charge.</p>
+        <p>Scaffold struck 18 Aug — back gutters unblocked, but delayed (decking substructure prioritised instead), new date TBC. A render soft wash has also been added ahead of board-laying, alongside back gutters and minor slate repairs, as they all need to clear before decking boards go down. Front gutters and tile repairs unaffected throughout. Gutters/tile repairs included in Luke's roof-work price — no separate charge.</p>
       </div>
       <div class="card">
         <span class="pill p-floating">Floating</span>
@@ -156,8 +158,9 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
 <section class="alt">
   <div class="container">
     <h2>Timeline</h2>
-    <p class="gantt-caption">Reflects Gantt v3 &middot; 10 Aug 2026 (replanned for parallel execution). Grey columns = Luke's holidays; Mon 31 Aug is a bank holiday. Decking starts 1 Sep, set by Luke's return from holiday rather than sequential dependencies. Gold diamonds = stage gates and milestones.</p>
+    <p class="gantt-caption">Reflects Gantt v4 &middot; 3 Sep 2026 restructure (gate renumbering, render soft wash added, board-laying split from substructure). Grey columns = Luke's holidays; Mon 31 Aug is a bank holiday, and bars correctly pause rather than continue through holiday weeks. Gold diamonds = stage gates and milestones. Solid bars are scheduled or complete; dashed outline bars are estimated, pushed back from the original placeholder since the gates ahead of them (G2, G3) haven't started. Italic rows with no bar are confirmed but not yet dated at all. Phase 3 (rainy-day pool) items are listed separately below, as they have no fixed sequence.</p>
     <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+    <p style="font-weight:600;margin:1.25rem 0 .25rem;color:var(--gray-med);font-size:.85rem;text-transform:uppercase;letter-spacing:.03em">Phase 3 — floating / rainy-day pool</p>
     <ul class="g-float" id="gfloat"></ul>
   </div>
 </section>
@@ -176,12 +179,16 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
       <li><span class="d">Sun 16 – Mon 17 Aug</span><span>Decking side (b) STARTS — substructure phase: old boards and substructure removed, new brick pier supports going in (concrete mixed onsite). Ahead of side (a), board-laying still to come</span><span class="who">Luke +1</span></li>
       <li><span class="d">Mon 17 Aug</span><span>Chimney cowl fitted; soakaway investigation works carried out, more to come</span><span class="who">Luke +1</span></li>
       <li><span class="d">Tue 18 Aug</span><span>Chimney + coping both complete — sealant applied, Gate 1 cleared. Scaffold struck, final balance settled</span><span class="who">Luke +2</span></li>
-      <li><span class="d">TBC</span><span>Back gutters — delayed, decking substructure prioritised this week instead. Still gates new decking board installation, either side</span><span class="who">Luke +1</span></li>
+      <li><span class="d">TBC</span><span>Back gutters — delayed, decking substructure prioritised instead. Part of Gate 2 (with minor slate repairs and render soft wash), needed before decking boards go down</span><span class="who">Luke +1</span></li>
+      <li><span class="d">TBC</span><span>Render soft wash (chimney + coping) — new requirement, must complete before decking boards go down due to chemical residue. Also part of Gate 2</span><span class="who">Luke +1</span></li>
+      <li><span class="d">TBC</span><span>Outside tap/pipework check + weed-stop membrane — Gate 3, before decking boards go down</span><span class="who">Luke +1</span></li>
       <li><span class="d">Mon 18 Aug</span><span>Soakaway investigation phase complete — excavation resumes after Luke's holiday (~1 Sep+), rather than completing before it as originally planned</span><span class="who">Luke +1</span></li>
-      <li class="hol"><span class="d">22 – 29 Aug</span><span>Luke on holiday (plus bank holiday Mon 31 Aug) — binding constraint on board-laying start</span><span class="who">—</span></li>
-      <li><span class="d">Tue 1 Sep</span><span>Decking side (a) begins (strip-out, substructure, board-laying) — gate (a) access only</span><span class="who">Luke +1</span></li>
-      <li><span class="d">Thu 8 Oct</span><span>Decking side (b) board-laying completes → Gate 3 sign-off</span><span class="who">Lara · Neels · Ryan</span></li>
-      <li><span class="d">Wed 14 Oct</span><span>Project completion — snagging &amp; final sign-off</span><span class="who">All</span></li>
+      <li><span class="d">Thu 20 Aug</span><span>Decking labour stage 1 settled — 4 stages confirmed in total</span><span class="who">Ryan</span></li>
+      <li class="hol"><span class="d">22 – 29 Aug</span><span>Luke on holiday (plus bank holiday Mon 31 Aug)</span><span class="who">—</span></li>
+      <li><span class="d">Tue 1 Sep</span><span>Soakaway works cancelled — cost-benefit ratio not worth it</span><span class="who">Luke / family</span></li>
+      <li><span class="d">Wed 3 Sep</span><span>Digger onsite — excavating to investigate the chimney waste pipe and widen decking side (a). Earth reused as buttress-wall infill on side (b)</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Thu 8 Oct</span><span>Decking board-laying, all sides, completes → Gate 4 sign-off</span><span class="who">Lara · Neels · Ryan</span></li>
+      <li><span class="d">Wed 14 Oct</span><span>Project completion — snagging &amp; final sign-off (Gate 5)</span><span class="who">All</span></li>
     </ul>
   </div>
 </section>
@@ -190,7 +197,7 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
   <div class="container">
     <h2>Downloads</h2>
     <div class="dl">
-      <a href="files/Spinney_Gantt_v3.xlsx">Project Gantt &amp; task register (Excel)<span class="meta">v3 · 10 Aug 2026</span></a>
+      <a href="files/Spinney_Gantt_v4.xlsx">Project Gantt &amp; task register (Excel)<span class="meta">v4 · 3 Sep 2026</span></a>
       <a href="files/Decking_plan.pdf">Decking design plan (PDF)<span class="meta">pre-final · orange = upper level, green = lower</span></a>
       <a href="files/Spinney_Budget_Tracker_v4.xlsx">Budget &amp; invoice tracker (Excel)<span class="meta">v4 · 10 Aug 2026 (updated)</span></a>
     </div>
@@ -215,6 +222,12 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
     <h2>Decisions log</h2>
     <table>
       <tr><th style="width:8.5rem">Date</th><th>Decision</th><th style="width:10rem">Made by</th></tr>
+      <tr><td>3 Sep 2026</td><td>Render soft wash (chimney + coping) added as a new requirement — must complete before decking boards go down, due to chemical residue risk. Likely contingency-funded. Added to Gate 2 alongside gutters and minor slate repairs.</td><td>Ryan</td></tr>
+      <tr><td>3 Sep 2026</td><td>Gantt restructured for clarity: task order corrected to match actual sequence (scaffold strike now precedes gutters, matching what actually happened); three new gates introduced — Gate 2 (gutters, slate repairs, render soft wash), Gate 3 (tap/pipework, weed-stop membrane), Gate 4 (combined decking sign-off, replacing separate side (a)/(b) sign-offs). Board-laying is now tracked as its own step across both sides, separate from substructure work.</td><td>Ryan</td></tr>
+      <tr><td>3 Sep 2026</td><td>Excavation under way, side (a) — digger onsite, serving two purposes: investigating the chimney waste pipe, and widening the decking area by removing grass. Earth removed is being reused as buttress-wall infill along side (b), to stop the garden sinking under the new substructure. Decking side (a)'s substructure begins once this excavation is complete.</td><td>Luke / Ryan</td></tr>
+      <tr><td>1 Sep 2026</td><td>Soakaway drainage works cancelled — family and Luke agreed the cost-benefit ratio wasn't there. No cost impact: nothing had been drawn against it. The investigation work already done (18 Aug) feeds into the pipe investigation instead.</td><td>Luke / family</td></tr>
+      <tr><td>20 Aug 2026</td><td>Decking labour stage 1 (25%) settled — trigger structure now confirmed as flat 25% per stage, 4 stages total.</td><td>Luke / Ryan</td></tr>
+      <tr><td>21 Aug 2026</td><td>Weed-stop membrane added to the decking substructure spec, below the boards. Outside tap/pipework (utility room to Summer house, routed under the substructure) flagged for a pre-board-laying check: connections, extra insulation, and whether the elbow needs supporting.</td><td>Ryan</td></tr>
       <tr><td>19 Aug 2026</td><td>Re-plan: back gutters delayed, not starting this week — decking substructure (old boards/substructure removal, new substructure install) prioritised instead. Soakaway investigation phase confirmed complete 18 Aug; excavation phase now resumes after Luke's holiday (~1 Sep+) rather than completing before it as originally planned.</td><td>Luke / Ryan</td></tr>
       <tr><td>18 Aug 2026</td><td>Chimney and coping both complete — sealant applied, Gate 1 cleared. Scaffold struck the same day, final balance settled. Full above-ground works now finished.</td><td>Luke / Ryan</td></tr>
       <tr><td>18 Aug 2026</td><td>Back gutters confirmed to gate new decking board installation specifically (either side) — not the strip-out/substructure work, which can and does proceed in parallel.</td><td>Luke / Ryan</td></tr>
@@ -267,29 +280,32 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
       {id:'1.1', label:'Scaffold A + B erection (Trevor)', s:'2026-07-17', e:'2026-07-18'},
       {id:'1.2', label:'Chimney repair — COMPLETE 18 Aug', s:'2026-07-20', e:'2026-08-18'},
       {id:'1.3', label:'Coping stones repair — COMPLETE 18 Aug', s:'2026-08-03', e:'2026-08-18'},
-      {id:'2.1', label:'Soakaway investigation — complete 18 Aug. Excavation resumes after Luke\u2019s holiday (~1 Sep+)', s:'2026-08-10', e:'2026-08-18'},
-      {id:'2.0b', label:'Decking side (b) substructure — old boards/substructure out, new brick piers going in', s:'2026-08-17', e:'2026-08-21'},
+      {id:'1.4', label:'Scaffold strike — COMPLETE, final £1,200 settled', s:'2026-08-18', e:'2026-08-18'},
       {id:'G1', label:"Gate 1 — CLEARED 18 Aug", s:'2026-08-17', ms:true},
-      {id:'1.5', label:'Scaffold strike — COMPLETE, final £1,200 settled', s:'2026-08-18', e:'2026-08-18'},
+      {id:'1.5', label:'Back-of-house gutters — delayed, decking substructure prioritised instead (est.)', s:'2026-09-07', e:'2026-09-07', est:true},
+      {id:'1.6', label:'Render soft wash (chimney + coping) — chemical residue risk to new boards (est.)', s:'2026-09-08', e:'2026-09-09', est:true},
+      {id:'G2', label:'Gate 2 — gutters, minor slate repairs, render soft wash complete (est.)', s:'2026-09-11', ms:true},
       {phase:'Phase 2 — Groundworks & decking'},
+      {id:'2.1', label:'Soakaway — investigation done 18 Aug, works CANCELLED 1 Sep (cost-benefit)', s:'2026-08-10', e:'2026-08-18'},
       {id:'V1', label:'V4 Phase 1 — complete 12 Aug; 228 decking boards outstanding (Phase 2)', s:'2026-08-10', e:'2026-08-12'},
-      {id:'2.3', label:'Decking side (a) — gate (a) access', s:'2026-09-01', e:'2026-09-17'},
-      {id:'G2', label:'Gate 2 — decking (a) sign-off', s:'2026-09-18', ms:true},
-      {id:'2.4', label:'Decking side (b) — gate (b) access', s:'2026-09-21', e:'2026-10-07'},
-      {id:'G3', label:'Gate 3 — decking (b) sign-off', s:'2026-10-08', ms:true},
-      {id:'2.5', label:'Bonus — BBQ & shed area (offcuts)', s:'2026-10-09', e:'2026-10-13'},
-      {id:'G4', label:'Completion — final sign-off', s:'2026-10-14', ms:true}
+      {id:'2.2', label:'Decking side (a) substructure — pipe investigation + widen decking, digger onsite (duration TBC)', s:'2026-09-03', e:'2026-09-10'},
+      {id:'2.3', label:'Decking side (b) substructure — lower + upper layers under way, buttress walls (duration TBC)', s:'2026-08-17', e:'2026-09-10'},
+      {id:'2.4', label:'Outside tap/pipework check (utility room to Summer house) — connections, insulation, elbow support (est.)', s:'2026-09-07', e:'2026-09-08', est:true},
+      {id:'G3', label:'Gate 3 — tap/pipework insulated, weed-stop membrane installed (est.)', s:'2026-09-11', ms:true},
+      {id:'2.5', label:'Lay Millboard decking, all sides — combined task (est., awaiting G2 + G3)', s:'2026-09-15', e:'2026-10-14', est:true},
+      {id:'G4', label:'Gate 4 — decking sign-off, all sides (est.)', s:'2026-10-14', ms:true},
+      {id:'2.6', label:'Bonus — BBQ & shed area (offcuts) (est.)', s:'2026-10-15', e:'2026-10-19', est:true},
+      {id:'G5', label:'Project completion — final sign-off (est.)', s:'2026-10-20', ms:true}
     ],
     floating: [
       ['3.1','Driveway channel (water softener waste)','rainy-day pivot, any time'],
       ['3.2','Front-of-house gutters, minor roof repairs and tile repairs','rainy-day pivot, any time'],
-      ['1.4','Back-of-house gutters','delayed 19 Aug \u2014 decking substructure prioritised this week, new date TBC'],
       ['3.3','Fence spurring, side (b)','propped temporarily, not blocking substructure work — fix deferred to wet weather'],
       ['3.4','Tree / bush clearing','external company, outside project'],
       ['3.5','Fence relocation','after external tree works + TPO decision'],
       ['3.6','Skip 2','triggered by Luke\'s request when decking needs it'],
       ['V2','V4 Phase 2 — remaining decking boards','ordered on request, not before decking (a) underway'],
-      ['3.7','Pipe investigation & replacement (leak beneath chimney)','side (a) confirmed — after strike + decking (a) strip-out, ~early Sep'],
+      ['V3','V4 Phase 3 — 15 more subframe screws','requested by Luke, not yet ordered'],
       ['T1','TPO appeal decision','date TBC']
     ]
   };
@@ -329,10 +345,18 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
       return;
     }
     var lab = document.createElement('div');
-    lab.className = 'g-cell g-label';
-    lab.textContent = row.id + ' · ' + row.label;
+    lab.className = 'g-cell g-label' + (row.s ? '' : ' g-tbc');
+    lab.textContent = row.id + ' · ' + row.label + (row.s ? '' : '  (TBC)');
     lab.title = row.label;
     el.appendChild(lab);
+    if (!row.s){
+      for (var i = 0; i < G.weeks; i++){
+        var c = document.createElement('div');
+        c.className = 'g-cell' + (isHol(i) ? ' g-hol' : '');
+        el.appendChild(c);
+      }
+      return;
+    }
     var s = new Date(row.s + 'T00:00:00');
     var e = new Date((row.e || row.s) + 'T00:00:00');
     for (var i = 0; i < G.weeks; i++){
@@ -340,7 +364,7 @@ footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem
       var cls = 'g-cell';
       var wStart = wk(i), wEnd = new Date(wStart.getTime() + 6*DAY);
       if (isHol(i)) cls += ' g-hol';
-      if (s <= wEnd && e >= wStart) cls += row.ms ? ' g-ms' : ' g-bar';
+      if (s <= wEnd && e >= wStart && !isHol(i)) cls += row.ms ? ' g-ms' : (row.est ? ' g-bar g-bar-est' : ' g-bar');
       c.className = cls;
       c.title = row.id + ' · ' + row.label + ' — ' + fmt(s) + (row.e && row.e !== row.s ? ' to ' + fmt(e) : '');
       el.appendChild(c);
