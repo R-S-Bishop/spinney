@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Spinney External Works — Project Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0d9488; --teal-dark:#0f766e; --teal-light:#5eead4;
+  --gold:#f59e0b; --gray-dark:#1f2937; --gray-med:#6b7280;
+  --gray-light:#f3f4f6; --white:#fff;
+  --font-head:'Merriweather',serif; --font-body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);font-size:1rem;line-height:1.65;color:var(--gray-dark);background:var(--white)}
+.container{max-width:1000px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--font-head);line-height:1.25}
+a{color:var(--teal);text-decoration:none}
+a:hover{color:var(--teal-dark)}
+
+/* Header */
+header{background:var(--teal-dark);color:var(--white);padding:2.5rem 0 2rem}
+header h1{font-size:2rem;font-weight:900;color:var(--white)}
+header .scope{color:var(--teal-light);margin-top:.5rem;max-width:46rem}
+header .updated{display:inline-block;margin-top:1rem;background:rgba(255,255,255,.12);border-radius:999px;padding:.25rem .9rem;font-size:.85rem}
+
+section{padding:2.5rem 0}
+section h2{font-size:1.4rem;margin-bottom:1.25rem;border-bottom:3px solid var(--gold);display:inline-block;padding-bottom:.25rem}
+.alt{background:var(--gray-light)}
+
+/* Status dashboard */
+.vision{margin:1.5rem 0 0}.vision img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid #e5e7eb}.vision figcaption{font-size:.85rem;color:var(--gray-med);margin-top:.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.card{background:var(--white);border:1px solid #e5e7eb;border-left:4px solid var(--teal);border-radius:8px;padding:1rem 1.1rem}
+.alt .card{box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h3{font-size:1.02rem;margin-bottom:.35rem}
+.card p{font-size:.9rem;color:var(--gray-med)}
+.pill{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;border-radius:999px;padding:.15rem .65rem;margin-bottom:.5rem}
+.p-notstarted{background:#e5e7eb;color:#374151}
+.p-progress{background:#ccfbf1;color:var(--teal-dark)}
+.p-complete{background:var(--teal);color:var(--white)}
+.p-blocked{background:#fee2e2;color:#991b1b}
+.p-floating{background:#fef3c7;color:#92400e}
+.p-cancelled{background:#f3f4f6;color:#9ca3af;text-decoration:line-through}
+
+/* Key dates */
+.dates{list-style:none}
+.dates li{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid #e5e7eb;align-items:baseline}
+.dates .d{flex:0 0 9.5rem;font-weight:600;color:var(--teal-dark);font-size:.92rem}
+.dates .who{margin-left:auto;font-size:.8rem;color:var(--gray-med);white-space:nowrap}
+.dates li.hol .d{color:var(--gray-med)}
+.dates li.action .d{color:var(--gold)}
+
+/* Downloads */
+.dl{display:flex;flex-direction:column;gap:.75rem;max-width:40rem}
+.dl a{display:flex;justify-content:space-between;gap:1rem;background:var(--white);border:1px solid #e5e7eb;border-radius:8px;padding:.85rem 1.1rem;font-weight:500}
+.dl a:hover{border-color:var(--teal)}
+.dl .meta{color:var(--gray-med);font-weight:400;font-size:.85rem;white-space:nowrap}
+.dl .soon{opacity:.55;border-style:dashed;cursor:default}
+
+/* Contacts & decisions tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;background:var(--teal-dark);color:var(--white);padding:.55rem .8rem;font-weight:600}
+td{padding:.55rem .8rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+tr:nth-child(even) td{background:var(--gray-light)}
+.tag{font-size:.72rem;font-weight:600;color:var(--gray-med);text-transform:uppercase;letter-spacing:.04em}
+
+/* Inline Gantt */
+.gantt-caption{font-size:.85rem;color:var(--gray-med);margin-bottom:.75rem}
+.gantt-wrap{overflow-x:auto;border:1px solid #e5e7eb;border-radius:8px;position:relative;background:var(--white)}
+.gantt{display:grid;font-size:.78rem;min-width:max-content;position:relative}
+.g-cell{border-bottom:1px solid #f1f3f5;border-right:1px solid #f8f9fa;height:34px}
+.g-label{position:sticky;left:0;background:var(--white);z-index:2;display:flex;align-items:center;padding:0 .6rem;font-weight:500;border-right:1px solid #e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-head{position:sticky;top:0;background:var(--teal-dark);color:var(--white);font-weight:600;display:flex;align-items:center;justify-content:center;height:38px;z-index:1}
+.g-head.g-label{z-index:3;background:var(--teal-dark)}
+.g-tbc{color:var(--gray-med);font-style:italic}
+.g-phase{background:var(--teal);color:var(--white);font-weight:600;z-index:2;overflow:visible;text-overflow:clip}
+.g-phase-fill{background:var(--teal)}
+.g-hol{background:var(--gray-light)}
+.g-bar{position:relative}
+.g-bar::after{content:"";position:absolute;left:8%;right:8%;top:9px;bottom:9px;background:var(--teal);border-radius:4px}
+.g-bar-est::after{background:transparent;border:2px dashed var(--teal);opacity:.7}
+.g-ms{position:relative}
+.g-ms::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;background:var(--gold);transform:translate(-50%,-50%) rotate(45deg);border-radius:2px}
+.g-today{position:absolute;top:38px;bottom:0;width:2px;background:var(--gold);z-index:1;pointer-events:none}
+.g-today::before{content:"today";position:absolute;top:-1px;left:4px;font-size:.62rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em}
+.g-float{margin-top:1rem;font-size:.88rem}
+.g-float li{padding:.3rem 0;border-bottom:1px solid #f1f3f5;list-style:none;color:var(--gray-med)}
+.g-float li strong{color:var(--gray-dark);font-weight:600}
+footer{background:var(--gray-dark);color:#9ca3af;font-size:.82rem;padding:1.5rem 0;text-align:center}
+
+@media (max-width:600px){
+  header h1{font-size:1.5rem}
+  .dates li{flex-wrap:wrap}
+  .dates .who{margin-left:0;flex-basis:100%}
+  table{font-size:.82rem}
+  th,td{padding:.45rem .5rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Spinney External Works</h1>
+    <p class="scope">Eight workstreams, one page: chimney, coping stones, drainage, decking, driveway channel, gutters &amp; roofline works, fencing and the new shed &amp; electrics. Everything the team needs — status, dates, files, contacts — lives here.</p>
+    <span class="updated">Last updated: Friday 30 October 2026 · Week 14</span>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Workstream status</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="pill p-complete">Complete</span>
+        <h3>1 · Chimney repair</h3>
+        <p>Cowl fitted 17 Aug, sealant applied 18 Aug — complete. Scaffold struck 18 Aug, final payment settled.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-complete">Complete</span>
+        <h3>2 · Coping stones repair</h3>
+        <p>Sealant applied 18 Aug — complete. Labour fully settled (cash + invoiced). Scaffold struck 18 Aug, final payment settled.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-cancelled">Cancelled</span>
+        <h3>3 · Drainage — soakaway</h3>
+        <p>Cancelled 1 Sep — cost-benefit ratio wasn't there. The investigation work already done (18 Aug) carries forward into the pipe investigation instead (see Decking).</p>
+      </div>
+      <div class="card">
+        <span class="pill p-progress">In progress</span>
+        <h3>4 · Decking replacement</h3>
+        <p>Materials: the original V4 order is paid in full, and a further V4 order for the new shed/extended deck was placed and paid on 29 Sep (delivery 30 Sep–1 Oct). Luke's team has been working on the extended decking area, and a further V4 delivery arrived on Mon 19 Oct to complete the substructure, and was paid for on 22 Oct. Millboard formally signed off the substructure on 22 Oct, which secures the 25-year warranty on the boards; the main decking's upper-level curves still need completing. Gate 3 is now cleared (weed-stop membrane laid Sat 24 Oct), and Millboard board-laying started on Mon 26 Oct, beginning on the non-chimney side. The Covers Merchants Plas-Pro joists and bearers needed to complete the extended decking and shed base were delivered the same day, so this week pivoted to that area. By Fri 30 Oct the extended decking was almost finished, and it completes on Mon 2 Nov. A further V4 order (screws, fixings and delivery, £365.66, paid on 30 Oct) and the remaining 193 Ashwood boards from the original order are due to be delivered on Wed 4 Nov for the main deck. A £41.66 order of PU adhesive for the main deck was also placed on 30 Oct. Board-laying (including the new area leading to the shed) was gated on three gates: Gate 2 (roofline works, lead flashing and the whole-house soft wash are all complete, so it is clear), Gate 3 (tap/pipework and weed-stop membrane; pipe insulation completed 22 Oct, membrane laid 24 Oct, so it is clear) and Gate 3B (substructure sign-off by Millboard's technical area manager, passed on 22 Oct). Labour: £8,400 paid covers £8,844.44 of the £17,600 quoted value after the 10% cash discount — £8,755.56 remains. Luke's separate invoice for the curves and additional deck (£1,850) was paid on 9 Oct, and a further invoice, INV-0294 (£1,350: £1,000 of extra decking labour plus the £350 driveway channel), was paid on 17 Oct. Both were drawn from contingency. Separately, Luke was paid £720 in cash on Fri 23 Oct (£800 less a 10% cash discount) for the equivalent of two days' extra decking work, mainly on the main deck curves, also from contingency. Luke is owed a further three days' work (£1,200 less the 10% cash discount, £1,080), to be paid in cash from contingency.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-complete">Complete</span>
+        <h3>5 · Driveway channel</h3>
+        <p>The water-softener discharge is now connected to natural drainage and the cobbles have been reinstated. Started and finished on Wed 14 Oct (half a day), and the softener discharge is confirmed working.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-complete">Complete</span>
+        <h3>6 · Gutters &amp; roofline works</h3>
+        <p>Roofline works — gutter replacement to the parapet and lower rear elevation, fascia/soffit extension, slate and tile repairs, and barge board trim — started 29 Sep, rear of house first, and were completed on Fri 16 Oct, including the additional lead flashing on the back-of-house gutters. Own scope, own budget (estimate 4 Sep); labour (£1,600) and materials to date are paid. There are no front-of-house gutters in this scope. The whole-house soft wash by Gorgeous Cleaning Services was started and finished on Mon 19 Oct, so Gate 2 is clear. Separately, three new grates will be fitted to the side of the house, replacing the old ones (extra work, date to follow).</p>
+      </div>
+      <div class="card">
+        <span class="pill p-floating">Floating</span>
+        <h3>7 · Fencing</h3>
+        <p>Three separate fence jobs. The boundary fence on the chimney side (side a) — reclaimed from the neighbour to enable the wider decking area, repositioned at a new extended height — is complete (11 Sep). Separately, spurring along side (b) still needs reinforcing with concrete spurs before decking board-laying begins; substructure work isn't affected, and this one's deferred to wet weather for easier handling. A third stretch, dependent on the TPO appeal outcome, remains on hold; tree works there are handled by an external company outside this project.</p>
+      </div>
+      <div class="card">
+        <span class="pill p-progress">In progress</span>
+        <h3>8 · New shed &amp; electrics</h3>
+        <p>A new shed on the extended decking area, with its own power and lighting. The new decking substructure beneath it was formally signed off by Millboard on 22 Oct, and Matt at Revolutional Electrical has run the cables under the decking to the shed area and for the extended-deck lighting (first fix, 22 Oct). The shed materials have arrived and the shed was nearly built by Fri 30 Oct. Construction is due to finish on Tue 3 Nov, not including the electrics. The final fix and light fittings follow when Revolutional Electrical return on Thu 12 Nov. Funded from contingency; costs to follow once quoted.</p>
+      </div>
+    </div>
+    <figure class="vision">
+      <a href="files/new-shed-mockup.jpg"><img src="files/new-shed-mockup.jpg" alt="AI-generated mock-up of the finished decking area with the new shed, lighting and seating" loading="lazy"></a>
+      <figcaption><strong>The finished area, as envisaged (workstream 8).</strong> AI-generated mock-up — illustrative only; final materials, layout and lighting may differ. Click to enlarge.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <h2>Timeline</h2>
+    <p class="gantt-caption">Reflects Gantt v11 &middot; 30 Oct 2026 update. Grey columns = Luke's holidays; Mon 31 Aug is a bank holiday, and bars correctly pause rather than continue through holiday weeks. Gold diamonds = stage gates and milestones. Solid bars are complete, past, or firmly scheduled; dashed outline bars are estimated future dates, not yet confirmed. Italic rows with no bar are confirmed but not yet dated at all. Phase 3 (rainy-day pool) items are listed separately below, as they have no fixed sequence.</p>
+    <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+    <p style="font-weight:600;margin:1.25rem 0 .25rem;color:var(--gray-med);font-size:.85rem;text-transform:uppercase;letter-spacing:.03em">Phase 3 — floating / rainy-day pool</p>
+    <ul class="g-float" id="gfloat"></ul>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Downloads</h2>
+    <div class="dl">
+      <a href="files/Spinney_Gantt_v11.xlsx">Project Gantt &amp; task register (Excel)<span class="meta">v11 · 30 Oct 2026</span></a>
+      <a href="files/Decking_plan.pdf">Decking design plan (PDF)<span class="meta">pre-final · orange = upper level, green = lower</span></a>
+      <a href="files/Spinney_Budget_Tracker_v12.xlsx">Budget &amp; invoice tracker (Excel)<span class="meta">v12 · 30 Oct 2026</span></a>
+      <a href="files/Spinney_Bullnose_Tolerance_Log_27Oct2026.xlsx">Bullnose tolerance log &amp; laying order (Excel)<span class="meta">27 Oct 2026</span></a>
+    </div>
+  </div>
+</section>
+<section class="alt">
+  <div class="container">
+    <h2>Decisions log</h2>
+    <table>
+      <tr><th style="width:8.5rem">Date</th><th>Decision</th><th style="width:10rem">Made by</th></tr>
+      <tr><td>30 Oct 2026</td><td>Three further days of extended-deck and shed-base labour from Luke to be paid in cash (£1,200 less the 10% cash discount, £1,080), drawn from contingency. A V4 order for screws, fixings and delivery (£365.66) and a PU adhesive order (£41.66) for the main deck were also drawn from contingency. The earlier V4 screw invoice (£47.22) was withdrawn, as those screws are in the new V4 order.</td><td>Ryan</td></tr>
+      <tr><td>26 Oct 2026</td><td>Week plan reset now that board-laying has started: Luke continues the Millboard decking from the non-chimney side, then pivots to the extended deck and shed base using the Plas-Pro delivered today. Shed materials arrive Wed 28 Oct, assembly Wed/Thu, and boards in the extended area Thu/Fri 29–30 Oct.</td><td>Ryan / Luke</td></tr>
+      <tr><td>22 Oct 2026</td><td>Revolutional Electrical return on Thu 12 Nov for the electrics final fix and light fittings. This sets the window for Luke to finish the decking substructure and install the new shed.</td><td>Ryan</td></tr>
+      <tr><td>22 Oct 2026</td><td>New shed &amp; electrics added as workstream 8: order the shed, install it, then the electrics final fix. Funded from contingency and tracked under its own scope tag so the shed works can be seen separately.</td><td>Ryan</td></tr>
+      <tr><td>22 Oct 2026</td><td>Millboard formally approved the decking substructure. The 25-year warranty on the boards is secured and Gate 3B is cleared.</td><td>Millboard / Ryan</td></tr>
+      <tr><td>22 Oct 2026</td><td>Electrical cabling and lighting (Revolutional Electrical), the new shed and three new side-of-house grates (extra work) will all be drawn from contingency. No estimates yet; Revolutional Electrical has charged a call-out for today.</td><td>Ryan</td></tr>
+      <tr><td>17 Oct 2026</td><td>Luke's invoice INV-0294 (£1,350) paid by bank transfer: £350 for the driveway channel (half a day, Luke and Max) and £1,000 for extra decking labour. Both drawn from contingency.</td><td>Luke / Ryan</td></tr>
+      <tr><td>17 Oct 2026</td><td>Millboard site visit planned for Thu 22 Oct to formally approve the substructure, and therefore the warranty (Gate 3B). Passed on 22 Oct.</td><td>Ryan</td></tr>
+      <tr><td>16 Oct 2026</td><td>Roofline works complete, including the additional lead flashing. Gate 2 now needs only the whole-house soft wash, starting Mon 19 Oct.</td><td>Luke / Ryan</td></tr>
+      <tr><td>13 Oct 2026</td><td>Whole-house soft wash booked with Gorgeous Cleaning Services: £1,200 cash, drawn from contingency, starting Mon 19 Oct. It covers gutters, soffits, roof tiles, solar panels, render and windows, and replaces the chimney and coping-only wash (task 1.6). A previous supplier cleaning the whole house was more cost-effective than spot cleaning.</td><td>Ryan</td></tr>
+      <tr><td>13 Oct 2026</td><td>Hard deadline set: all roofline works, including the additional lead flashing, must be finished by Fri 16 Oct, before the soft wash starts on Mon 19 Oct. Roofline task 1.5 reopens until the remaining work is done. Gate 2 now needs the roofline work complete, not just the soft wash.</td><td>Ryan / Luke</td></tr>
+      <tr><td>9 Oct 2026</td><td>Luke's invoice INV-0293 (£1,850) for the extra work paid by bank transfer. It covers £800 for the curves (the item agreed on 24 Sep at £1,000, billed at £800) and £1,050 for the additional deck (extended deck and shed base). Drawn from contingency and separate from the £17,600 main decking labour, so £8,755.56 of that quoted value still remains.</td><td>Luke / Ryan</td></tr>
+      <tr><td>9 Oct 2026</td><td>Roofline works concluded this week, and decking substructure work continued. Gate 2 still needs the additional lead flashing and the render soft wash before decking boards are laid.</td><td>Luke / Ryan</td></tr>
+      <tr><td>6 Oct 2026</td><td>Luke repaid £144.85, the part of the 11 Sep £500 that cleared Travis Perkins invoices for other jobs. With the 5 Oct card payment, our net Travis Perkins settlement is the agreed £2,169.04.</td><td>Luke</td></tr>
+      <tr><td>5 Oct 2026</td><td>£2,313.89 paid to Travis Perkins by card: the £100.11 balance of invoice 1049595624 plus invoices 7 to 19 (£2,213.78). All Travis Perkins invoices to date are now paid and the account balance is £0.</td><td>Ryan</td></tr>
+      <tr><td>4 Oct 2026</td><td>Timeline simplified now the roofline works estimate is understood. Task 1.5 becomes "Roofline works" (gutter replacement, fascia/soffit, slate and tile repairs, barge boards); old 1.7 (this estimate) and old 3.2 (front gutters and tile repairs) are merged into it and removed. The estimate has no front-of-house gutters, and front tile repairs are covered by "replace various broken slates". The earlier "gutters included in Luke's price" understanding is superseded by the roofline estimate. Task numbers are not reused, so earlier entries still read correctly.</td><td>Ryan</td></tr>
+      <tr><td>4 Oct 2026</td><td>Two changes to the gates before decking boards are laid. Gate 2 now also needs the additional lead flashing work on the back-of-house gutters (new task 1.5a — about £200, drawn from contingency, not started). New Gate 3B: Ryan will invite Millboard's technical area manager and Jon from V4 Flooring to view and sign off the completed substructure before any boards are laid. This validates the warranty, and gives good photos and PR for the project, Luke, V4 and Millboard.</td><td>Ryan</td></tr>
+      <tr><td>4 Oct 2026</td><td>Decking labour position: £8,755.56 of the £17,600 quoted value remains. Stage 1 (£4,400) plus two £2,000 cash instalments at the 10% cash discount cover £8,844.44. Luke's own workings (£8,756) match. The £11,200 in the older tracker view pre-dated the 18 Sep instalment and the discount treatment.</td><td>Luke / Ryan</td></tr>
+      <tr><td>3 Oct 2026</td><td>Schedule re-set. The render soft wash only starts Mon 5 Oct and the tap/pipework check (Gate 3) has not started, so decking board-laying cannot begin on the earlier estimate of Tue 6 Oct. Board-laying, Gate 4 and project completion are shown as TBC until Luke gives revised estimates for the substructure and the tap/pipework check.</td><td>Ryan</td></tr>
+      <tr><td>3 Oct 2026</td><td>Travis Perkins account reconciled against TP's own transaction history and approved by Luke. The £500 paid to TP on 11 Sep cleared our invoice 1049231418 and part of 1049595624; £144.85 of it cleared invoices for other jobs and is credited back. Amount to settle on our TP invoices: £2,169.04 (£2,138.74 if the £30.30 refundable pallet deposit is returned).</td><td>Luke / Ryan</td></tr>
+      <tr><td>3 Oct 2026</td><td>Roofline works labour (£1,600, INV-0291) paid by bank transfer, and materials (four invoices, £390.40) paid in full. The scaffold tower in the estimate wasn't needed — Luke used his own ladder — which more than offsets the extra materials cost. Works finish Mon 5 Oct.</td><td>Luke / Ryan</td></tr>
+      <tr><td>3 Oct 2026</td><td>Additional lead work identified during the roofline works — lead needs chasing into the walls so the gutters work properly. Estimated at about £200, not started. Treated as extra scope and drawn from contingency.</td><td>Ryan</td></tr>
+      <tr><td>29 Sep 2026</td><td>Materials for the new shed/extended decking area ordered from V4 by phone and paid (£5,322.74 incl. VAT, quote QUO-0031); delivery expected 30 Sep–1 Oct. Extra scope, drawn from contingency rather than the original decking materials order.</td><td>Ryan</td></tr>
+      <tr><td>18 Sep 2026</td><td>Second decking labour cash instalment paid (£2,000, 10% cash discount applied). Labour covered to date: £8,844.44 of the £17,600 quoted value; £8,755.56 remaining.</td><td>Luke / Ryan</td></tr>
+      <tr><td>11 Sep 2026</td><td>Boundary fence on the chimney side complete — reclaimed from the neighbour to enable the wider decking area, repositioned at a new extended height. Extra decking/shed digging, site cleanup, and the fence move settled together — £2,115 cash via Luke's trade rates. Old decking substructure wood collection also settled, £680 cash. Gutters, render soft wash, and the tap/pipework check confirmed not yet started — Gates 2 and 3 re-estimated to w/c 15 Sep.</td><td>Luke / Ryan</td></tr>
+      <tr><td>8 Sep 2026</td><td>New shed area confirmed as a boundary issue and scope increase — the neighbouring fence needed reclaiming to enable the wider decking area, at a new extended height (shed itself only needs its own substructure, not board-laying). Decking substructure (side a, side b, and the shed) re-planned to ~22 Sep, pushing board-laying and the final gates back correspondingly. Digger and barrow loader on hire that week (est. £530), old decking substructure wood collection settled at £680, both arranged via Luke's trade rates and contacts.</td><td>Luke / Ryan</td></tr>
+      <tr><td>8 Sep 2026</td><td>New roofline works estimate surfaced (£2,100) — full gutter replacement, fascia/soffit extension, slate replacement, and barge board trim. Own scope, own budget, separate from the earlier "gutters included in Luke's price" understanding for the existing gutter tasks. Start end of this week or next.</td><td>Luke / Ryan</td></tr>
+      <tr><td>4 Sep 2026</td><td>Decking labour cash instalment paid — confirmed the 10% cash discount applies to decking labour too (same as chimney/coping), correcting an earlier note that wrongly excluded it. Total paid to date on decking labour: £6,400 of £17,600 quoted.</td><td>Luke / Ryan</td></tr>
+      <tr><td>4 Sep 2026</td><td>Pipe investigation resolved — excavation confirmed no leaking waste pipe beneath the chimney. The damp ground found during scaffold erection (17 Jul) was condensation trapped under the old decking, unable to escape, not a plumbing fault. No repair needed, no contingency draw required for this item.</td><td>Luke / Ryan</td></tr>
+      <tr><td>3 Sep 2026</td><td>Render soft wash (chimney + coping) added as a new requirement — must complete before decking boards go down, due to chemical residue risk. Likely contingency-funded. Added to Gate 2 alongside gutters and minor slate repairs.</td><td>Ryan</td></tr>
+      <tr><td>3 Sep 2026</td><td>Gantt restructured for clarity: task order corrected to match actual sequence (scaffold strike now precedes gutters, matching what actually happened); three new gates introduced — Gate 2 (gutters, slate repairs, render soft wash), Gate 3 (tap/pipework, weed-stop membrane), Gate 4 (combined decking sign-off, replacing separate side (a)/(b) sign-offs). Board-laying is now tracked as its own step across both sides, separate from substructure work.</td><td>Ryan</td></tr>
+      <tr><td>3 Sep 2026</td><td>Excavation under way, side (a) — digger onsite, serving two purposes: investigating the chimney waste pipe, and widening the decking area by removing grass. Earth removed is being reused as buttress-wall infill along side (b), to stop the garden sinking under the new substructure. Decking side (a)'s substructure begins once this excavation is complete.</td><td>Luke / Ryan</td></tr>
+      <tr><td>1 Sep 2026</td><td>Soakaway drainage works cancelled — family and Luke agreed the cost-benefit ratio wasn't there. No cost impact: nothing had been drawn against it. The investigation work already done (18 Aug) feeds into the pipe investigation instead.</td><td>Luke / family</td></tr>
+      <tr><td>20 Aug 2026</td><td>Decking labour stage 1 (25%) settled — trigger structure now confirmed as flat 25% per stage, 4 stages total.</td><td>Luke / Ryan</td></tr>
+      <tr><td>21 Aug 2026</td><td>Weed-stop membrane added to the decking substructure spec, below the boards. Outside tap/pipework (utility room to Summer house, routed under the substructure) flagged for a pre-board-laying check: connections, extra insulation, and whether the elbow needs supporting.</td><td>Ryan</td></tr>
+      <tr><td>19 Aug 2026</td><td>Re-plan: back gutters delayed, not starting this week — decking substructure (old boards/substructure removal, new substructure install) prioritised instead. Soakaway investigation phase confirmed complete 18 Aug; excavation phase now resumes after Luke's holiday (~1 Sep+) rather than completing before it as originally planned.</td><td>Luke / Ryan</td></tr>
+      <tr><td>18 Aug 2026</td><td>Chimney and coping both complete — sealant applied, Gate 1 cleared. Scaffold struck the same day, final balance settled. Full above-ground works now finished.</td><td>Luke / Ryan</td></tr>
+      <tr><td>18 Aug 2026</td><td>Back gutters confirmed to gate new decking board installation specifically (either side) — not the strip-out/substructure work, which can and does proceed in parallel.</td><td>Luke / Ryan</td></tr>
+      <tr><td>17-18 Aug 2026</td><td>Decking side (b) substructure under way, well ahead of the 21 Sep plan date — old boards and substructure removed, new brick pier supports going in. Main board-laying still gated on gutters, V4's remaining boards, and Luke's holiday.</td><td>Luke +1</td></tr>
+      <tr><td>13 Aug 2026</td><td>Coping invoice settled in full.</td><td>Ryan</td></tr>
+      <tr><td>12 Aug 2026</td><td>Chimney cowl received — 2 days ahead of the Fri 14 Aug estimate. V4 Phase 1 delivery complete: all items received, including joists (Plas-Pro Bearer/Joist — two deliveries same day, confirmed). Only 228 decking boards (Milboard Enhanced Grain) remain, rolled into Phase 2 as planned — to be ordered when Lara/Ryan request delivery.</td><td>Ryan / Lara</td></tr>
+      <tr><td>12 Aug 2026</td><td>Skip 1 supplier changed: original supplier (Skip Hire Comparison Ltd) delayed delivery and was cancelled — refunded in full, 5-10 working days to clear. Elmbridge Mini Skips stepped in same day (11 Aug), delivered a skip already filled, then collected and swapped for an empty one the next day (12 Aug). Both Elmbridge invoices settled 12 Aug — £390 each, £780 total. Pooled rubbish-removal pot: £780 committed, £580 remaining of the £1,360 provisional budget.</td><td>Ryan</td></tr>
+      <tr><td>11 Aug 2026</td><td>Skip 1 supplier changed same-day: original supplier delayed delivery and was cancelled (refund in progress, 5-10 working days to clear). Elmbridge Mini Skips stepped in and delivered a skip, already filled — they collect and swap for an empty one tomorrow. Invoice covering both skips expected tomorrow; tracker will be updated once it arrives.</td><td>Ryan</td></tr>
+      <tr><td>10 Aug 2026</td><td>Back gutters: ladder access, no scaffold needed for the work itself — but scaffold removal comes first as it's in the way, so gutters follow the scaffold strike (~18 Aug). Both back gutters and front tile repairs (newly identified scope) are included in Luke's roof-work price, no separate charge. Back gutters complete ahead of decking strip-out and the coping balance invoice.</td><td>Ryan / Luke</td></tr>
+      <tr><td>10 Aug 2026</td><td>Soakaway drainage extended to a full 2 weeks (10&ndash;21 Aug) &mdash; no buffer before Luke's holiday. Scaffold erection at the chimney found wet ground, suggesting a leaking house waste pipe beneath the chimney. Confirmed: chimney = Scaffold A = decking side (a) &mdash; same location as the current soakaway deck demo. Investigation/replacement added to the Gantt: earliest start once scaffold is struck and side (a)'s old decking/substructure is removed (during decking (a) strip-out, ~early Sep). Contingency-funded, cost not yet known.</td><td>Ryan</td></tr>
+      <tr><td>10 Aug 2026</td><td>Timeline replanned: works are running in parallel (chimney, coping, soakaway simultaneously) rather than the original one-phase-at-a-time model. Decking (a) start set to Tue 1 Sep — determined by Luke's return from his 22&ndash;29 Aug holiday, not by sequential dependencies (all at-height work, gutters, and scaffold strike complete well ahead of that date). New dependency: back gutters must complete before decking strip-out, either side.</td><td>Ryan</td></tr>
+      <tr><td>10 Aug 2026</td><td>Rubbish removal pooled: family now supplies skips directly rather than Luke arranging disposal. £1,360 transferred from chimney (£80), coping (£80), and decking (£1,200) rubbish-removal quotes into a new pooled fund — first skip (£344.16, 8yd, delivery 11 Aug) drawn against it. Resolves chimney's outstanding £80 (no longer owed to Luke). More skips expected during decking; budget is provisional.</td><td>Ryan</td></tr>
+      <tr><td>7 Aug 2026</td><td>Chimney cowl to be replaced with a stainless steel one (to prevent rusting), superseding the original spec. Cost finalised 10 Aug: £62.90 (StoveWorldUK), paid direct by Ryan from the project account, booked as its own line under chimney repair.</td><td>Ryan / Luke</td></tr>
+      <tr><td>7 Aug 2026</td><td>Cash-labour discount confirmed at 10%. Coping stones base labour payment structure confirmed: 50% cash (£1,710.00, discount applied) paid today; 50% (£1,980.00, full price, incl. £80 rubbish removal) to be invoiced next week. Condensation-prep addition (£250 estimate) is separate and NOT yet priced — terms will be 100% cash (labour + materials) once finalised.</td><td>Ryan / Luke</td></tr>
+      <tr><td>4 Aug 2026</td><td>Additional scope approved for coping stones (£250, technical spec from Luke received 5 Aug): re-bed 3 bricks; reinforce parapet corners with fibreglass mesh; fit 4 weep holes to the front face above the internal damp-course membrane, to let condensation escape from under the new slate damp course (capped in plastic DPM). Combined labour + materials estimate — cash/invoice treatment to confirm when Luke is next onsite.</td><td>Lara / Ryan</td></tr>
+      <tr><td>24 Jul 2026</td><td>Chimney switched back to a non-cash invoice: labour invoiced at £3,088.30 (£3,200 less £111.70 work-platform prepayment), paid same day. As an invoiced (not cash) payment, the 10% discount does not apply. Rubbish removal (£80) not yet invoiced — outstanding.</td><td>Ryan / Lara / Luke</td></tr>
+      <tr><td>20 Jul 2026</td><td>Commercial terms agreed with Luke: 10% labour discount across all phases except decking labour and scaffolding. Chimney and coping stones to be settled as single cash payments on phase completion — £2,848.29 (net of £111.71 prepaid for a non-project work platform on the first materials receipt) and £3,500.00 respectively. Decking invoiced across 4–5 stages (triggers to be pinned); rainy-day tasks 100% on completion. Single-payment terms to be confirmed with Luke 21 Jul.</td><td>Lara / Ryan / Luke</td></tr>
+      <tr><td>20 Jul 2026</td><td>Scaffolding (external company, £3,200 combined): £2,000 paid in cash following erection; £1,200 balance due on strike.</td><td>Family / scaffold team</td></tr>
+      <tr><td>20 Jul 2026</td><td>Chimney (£480) and coping stones (£650) materials pooled into a single £1,130 budget via merchant trade accounts, cleared on receipts. Rationale: shared render materials, single pragmatic supply trips. First receipt logged — £311.98 project share.</td><td>Family / Luke</td></tr>
+      <tr><td>13 Jul 2026</td><td>Both scaffold towers erected together (15–16 Jul) and remain until Gate 1 sign-off, then struck.</td><td>Luke / family</td></tr>
+      <tr><td>13 Jul 2026</td><td>One phase at a time: whole crew works a single phase; planning basis is Luke +1 (extra hands are upside, never assumed).</td><td>Family</td></tr>
+      <tr><td>13 Jul 2026</td><td>Decking split into sides (a) and (b) with exclusive gate access per side — no material movement over newly laid Millboard. Garden segregation fencing keeps the garden usable through Summer.</td><td>Family / Luke</td></tr>
+      <tr><td>13 Jul 2026</td><td>V4 Flooring to receive 14 days' notice before decking materials are required onsite.</td><td>Ryan</td></tr>
+      <tr><td>13 Jul 2026</td><td>Fence relocation gated on TPO appeal outcome; spurring proceeds independently — and must complete along side (b) before decking side (b) starts. Tree works handled by an external company, outside this project's scope and budget.</td><td>Family</td></tr>
+      <tr><td>9 Jul 2026</td><td>Decking materials paid in full — £32,228.99 (V4 Wood Flooring, ref V4FQ-15584).</td><td>Lara</td></tr>
+      <tr><td>1 Jul 2026</td><td>Fence to be repaired and moved onto the correct boundary rather than replaced.</td><td>Lara / Luke</td></tr>
+      <tr><td>1 Jul 2026</td><td>Contingency of ~£5,000 agreed: fence move/repair labour, soakaway fix before decking, drainage by the garage, additional curved-decking labour, cement and bricks.</td><td>Lara / Luke</td></tr>
+      <tr><td>1 Jul 2026</td><td>Decking order amended to all Ashwood, with flexible bullnose boards for the curved upper level.</td><td>Lara / Luke / Jon (V4)</td></tr>
+    </table>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h2>Key dates</h2>
+    <ul class="dates">
+      <li><span class="d">Fri 17 – Sat 18 Jul</span><span>Scaffold A + B erected</span><span class="who">Trevor</span></li>
+      <li><span class="d">Mon 10 Aug</span><span>Soakaway drainage started (top-layer deck removal) — running in parallel</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 11 Aug</span><span>Skip 1 — original supplier delayed and cancelled; Elmbridge Mini Skips delivered same day (filled skip, swap for empty next day)</span><span class="who">—</span></li>
+      <li><span class="d">Wed 12 Aug</span><span>Elmbridge collected filled skip and delivered empty; both invoices settled same day</span><span class="who">—</span></li>
+      <li><span class="d">Wed 12 Aug</span><span>V4 Phase 1 complete — all items received, including joists (confirmed via two deliveries same day). Only 228 decking boards outstanding, rolled into Phase 2. Chimney cowl also received, 2 days ahead of estimate</span><span class="who">V4 Flooring / StoveWorldUK</span></li>
+      <li><span class="d">Wed 12 – Fri 14 Aug</span><span>Coping render applied</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Thu 13 Aug</span><span>Coping invoice settled in full</span><span class="who">Ryan</span></li>
+      <li><span class="d">Sun 16 – Mon 17 Aug</span><span>Decking side (b) STARTS — substructure phase: old boards and substructure removed, new brick pier supports going in (concrete mixed onsite). Ahead of side (a), board-laying still to come</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Mon 17 Aug</span><span>Chimney cowl fitted; soakaway investigation works carried out, more to come</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 18 Aug</span><span>Chimney + coping both complete — sealant applied, Gate 1 cleared. Scaffold struck, final balance settled</span><span class="who">Luke +2</span></li>
+      <li><span class="d">Mon 18 Aug</span><span>Soakaway investigation phase complete — excavation resumes after Luke's holiday (~1 Sep+), rather than completing before it as originally planned</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Thu 20 Aug</span><span>Decking labour stage 1 settled — 4 stages confirmed in total</span><span class="who">Ryan</span></li>
+      <li class="hol"><span class="d">22 – 29 Aug</span><span>Luke on holiday (plus bank holiday Mon 31 Aug)</span><span class="who">—</span></li>
+      <li><span class="d">Tue 1 Sep</span><span>Soakaway works cancelled — cost-benefit ratio not worth it</span><span class="who">Luke / family</span></li>
+      <li><span class="d">Thu 3 Sep</span><span>Digger onsite — excavating to widen decking side (a) and investigate the chimney waste pipe. Earth reused as buttress-wall infill on side (b)</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 4 Sep</span><span>Pipe investigation resolved — no leak found. Damp ground noticed at scaffold erection was condensation trapped under the old decking, not a plumbing fault. No repair needed</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 8 Sep</span><span>Digger + barrow loader on hire until Thu — decking widening and new shed excavation, arranged via Luke's trade rates (digger invoice £378.58). Old decking substructure wood collection also confirmed via Luke's contacts</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 8 Sep</span><span>Roofline works estimate confirmed (£2,100) — gutter replacement, fascia/soffit, slates, barge boards. Start end of this week or next</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 11 Sep</span><span>Boundary fence, chimney side, complete — reclaimed from the neighbour to enable the wider decking area, repositioned at a new extended height</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 11 Sep</span><span>Extra decking/shed digging, site cleanup, and the fence move above settled — £2,115 total, cash, via Luke's trade rates. Old decking substructure wood collection also settled, £680 cash (charged per trip)</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 18 Sep</span><span>Second decking labour cash instalment paid (£2,000, 10% cash discount) — £8,844.44 of the £17,600 quoted value now covered</span><span class="who">Ryan</span></li>
+      <li><span class="d">Tue 29 Sep</span><span>Roofline works start — rear of house first</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 29 Sep</span><span>V4 materials for the new shed/extended deck ordered and paid — delivery 30 Sep–1 Oct</span><span class="who">Ryan</span></li>
+      <li><span class="d">Sat 3 Oct</span><span>Roofline works labour paid; Travis Perkins account reconciliation approved by Luke</span><span class="who">Ryan</span></li>
+      <li><span class="d">Mon 5 Oct</span><span>Travis Perkins account settled — £2,313.89 paid by card (the balance of invoice 1049595624 plus invoices 7 to 19)</span><span class="who">Ryan</span></li>
+      <li><span class="d">Tue 6 Oct</span><span>Luke repaid £144.85 — the part of the 11 Sep £500 that cleared Travis Perkins invoices for other jobs</span><span class="who">Luke</span></li>
+      <li><span class="d">Week of 5 Oct</span><span>Main roofline works done (gutters, fascia/soffit, slates, barge boards). Decking substructure work continued</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 9 Oct</span><span>Luke's invoice INV-0293 (£1,850) for the curves and additional deck paid by bank transfer</span><span class="who">Ryan</span></li>
+      <li><span class="d">Tue 13 Oct</span><span>Luke's team working on the extended decking area</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Wed 14 Oct</span><span>Driveway channel started and completed in one day (half a day): water-softener discharge connected to natural drainage and confirmed working, cobbles reinstated</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 16 Oct</span><span>All roofline works complete, including the additional lead flashing on the back-of-house gutters</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Sat 17 Oct</span><span>Luke's invoice INV-0294 (£1,350) paid by bank transfer — £350 driveway channel and £1,000 extra decking labour</span><span class="who">Ryan</span></li>
+      <li><span class="d">Mon 19 Oct</span><span>Whole-house soft wash by Gorgeous Cleaning Services started and finished, and paid in cash (£1,200) — gutters, soffits, roof tiles, solar panels, render and windows. Gate 2 clear</span><span class="who">Gorgeous Cleaning</span></li>
+      <li><span class="d">Mon 19 Oct</span><span>V4 delivery arrived — materials to complete the decking substructure</span><span class="who">V4 Flooring</span></li>
+      <li><span class="d">Tue 20 Oct</span><span>Pipe lagging ordered for the outside tap/pipework (Gate 3), £177.58 — delivery date to follow</span><span class="who">Ryan</span></li>
+      <li><span class="d">Thu 22 Oct</span><span>V4 delivery (the Mon 19 Oct materials) paid by card</span><span class="who">Ryan</span></li>
+      <li><span class="d">Thu 22 Oct</span><span>Revolutional Electrical (Matt) ran cables under the decking to supply the new shed area and lighting for the new (extended) decking — first fix complete</span><span class="who">Revolutional Electrical</span></li>
+      <li><span class="d">Thu 22 Oct</span><span>Pipe insulation under the main decking substructure completed (Gate 3 element)</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Thu 22 Oct</span><span>Millboard on site and formally signed off the decking substructure — the 25-year warranty on the boards is secured (Gate 3B cleared)</span><span class="who">Millboard / Ryan</span></li>
+      <li><span class="d">Fri 23 Oct</span><span>Luke paid £720 in cash (£800 less a 10% cash discount) for the equivalent of two days' extra decking work, mainly the main deck curves</span><span class="who">Ryan</span></li>
+      <li><span class="d">Sat 24 Oct</span><span>Weed-stop membrane laid. With the pipe insulation done on 22 Oct, Gate 3 is cleared</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Mon 26 Oct</span><span>Millboard decking board-laying started, beginning on the non-chimney side</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Mon 26 Oct</span><span>Plas-Pro joists and bearers (Covers Merchants, £696.70, ordered Sun 25 Oct) collected and delivered to complete the extended decking and shed base</span><span class="who">Ryan</span></li>
+      <li><span class="d">Tue 27 Oct</span><span>Bullnose boards measured by calliper: all 19 within the manufacturer's 2mm tolerance, and the best laying order worked out (see Downloads)</span><span class="who">Ryan</span></li>
+      <li><span class="d">Wed 28 Oct</span><span>New shed materials arrived and construction began</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 30 Oct</span><span>Extended decking almost finished and the new shed nearly built</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Fri 30 Oct</span><span>Further V4 order placed and paid (screws, fixings and delivery, £365.66), plus a PU adhesive order for the main deck (£41.66)</span><span class="who">Ryan / Lara</span></li>
+      <li><span class="d">Mon 2 Nov</span><span>Extended decking due to be finished</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Tue 3 Nov</span><span>New shed construction due to be finished (electrics final fix excluded)</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Wed 4 Nov</span><span>V4 delivery: the remaining 193 Ashwood boards from the original order, plus the screws and fixings</span><span class="who">V4 Flooring</span></li>
+      <li><span class="d">TBC</span><span>Decking substructure completes — Millboard signed it off on 22 Oct; only the main decking upper-level curves remain, end date TBC</span><span class="who">Luke +1</span></li>
+      <li><span class="d">Thu 12 Nov</span><span>Revolutional Electrical return for the electrics final fix and light fittings. This is the window for Luke to finish the substructure and install the new shed first</span><span class="who">Revolutional Electrical / Luke +1</span></li>
+      <li><span class="d">TBC</span><span>Three new grates to the side of the house (extra work) — later date</span><span class="who">Luke +1</span></li>
+      <li><span class="d">TBC</span><span>Remaining decking board-laying, all sides (the main deck follows once the upper-level curves are complete). Gate 4 sign-off and project completion (Gate 5) will be dated after that</span><span class="who">All</span></li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="alt">
+  <div class="container">
+    <h2>Contacts</h2>
+    <table>
+      <tr><th>Name</th><th>Role</th><th>Team</th><th>Phone</th><th>Email</th></tr>
+      <tr><td>Lara</td><td>Key Decision Maker &amp; Budget Holder</td><td><span class="tag">Family</span></td><td>07791 528837</td><td>larakriek@gmail.com</td></tr>
+      <tr><td>Neels</td><td>Project management support</td><td><span class="tag">Family</span></td><td>07880 688027</td><td>neels.kriek@gmail.com</td></tr>
+      <tr><td>Ryan</td><td>Project Manager</td><td><span class="tag">Family</span></td><td>07851 601499</td><td>ryanbishop23@gmail.com</td></tr>
+      <tr><td>Luke</td><td>Chief builder, head of company</td><td><span class="tag">L.G Building and Roofing Ltd</span></td><td>07799 748123</td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+    <img src="rb-logo-white.png" alt="RB" width="36" height="36" style="opacity:.85;margin-bottom:.5rem">
+    <p>Private project page — not indexed, not linked. Questions or amends: Ryan.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var DAY = 86400000;
+  var G = {
+    weekStart: new Date('2026-07-13T00:00:00'),
+    weeks: 20,
+    holidays: ['2026-07-27','2026-08-24'],
+    rows: [
+      {phase:'Phase 1 — Scaffold & at-height works'},
+      {id:'1.0', label:'Site setup & segregation fencing', s:'2026-07-13', e:'2026-07-14'},
+      {id:'1.1', label:'Scaffold A + B erection (Trevor)', s:'2026-07-17', e:'2026-07-18'},
+      {id:'1.2', label:'Chimney repair — COMPLETE 18 Aug', s:'2026-07-20', e:'2026-08-18'},
+      {id:'1.3', label:'Coping stones repair — COMPLETE 18 Aug', s:'2026-08-03', e:'2026-08-18'},
+      {id:'1.4', label:'Scaffold strike — COMPLETE, final £1,200 settled', s:'2026-08-18', e:'2026-08-18'},
+      {id:'G1', label:"Gate 1 — CLEARED 18 Aug", s:'2026-08-17', ms:true},
+      {id:'1.5', label:'Roofline works — gutter replacement, fascia/soffit, slate and tile repairs, barge boards — COMPLETE Fri 16 Oct', s:'2026-09-29', e:'2026-10-16'},
+      {id:'1.5a', label:'Additional lead flashing, back-of-house gutters — extra scope — COMPLETE Fri 16 Oct (part of Gate 2)', s:'2026-10-16', e:'2026-10-16'},
+      {id:'1.6', label:'Whole-house soft wash (Gorgeous Cleaning Services) — COMPLETE, started and finished Mon 19 Oct', s:'2026-10-19', e:'2026-10-19'},
+      {id:'G2', label:'Gate 2 — CLEAR: roofline works, lead work and whole-house soft wash all complete', s:'2026-10-19', ms:true},
+      {phase:'Phase 2 — Groundworks & decking'},
+      {id:'2.1', label:'Soakaway — investigation done 18 Aug, works CANCELLED 1 Sep (cost-benefit)', s:'2026-08-10', e:'2026-08-18'},
+      {id:'V1', label:'V4 Phase 1 — complete 12 Aug; 228 decking boards outstanding (Phase 2)', s:'2026-08-10', e:'2026-08-12'},
+      {id:'2.2', label:'Decking side (a) substructure — pipe investigation resolved (no leak, condensation cause); build started w/c 21 Sep, extended deck area under way; Millboard signed off 22 Oct; Plas-Pro delivered 26 Oct for the extended deck; main-deck upper-level curves still to come', s:'2026-09-03', e:'2026-10-30'},
+      {id:'2.3', label:'Decking side (b) substructure — lower + upper layers under way, buttress walls; extended deck area under way; Millboard signed off 22 Oct; Plas-Pro delivered 26 Oct for the extended deck; main-deck upper-level curves still to come', s:'2026-08-17', e:'2026-10-30'},
+      {id:'2.4', label:'Outside tap/pipework check (utility room to Summer house) — pipe insulation COMPLETE Thu 22 Oct, weed-stop membrane laid Sat 24 Oct', s:'2026-10-22', e:'2026-10-24'},
+      {id:'G3', label:'Gate 3 — CLEARED Sat 24 Oct: tap/pipework insulated, weed-stop membrane laid', s:'2026-10-24', ms:true},
+      {id:'V6', label:'V4 delivery — materials to complete the decking substructure, arrived Mon 19 Oct, paid 22 Oct', s:'2026-10-19', ms:true},
+      {id:'V7', label:'Plas-Pro joists/bearers (Covers Merchants, ordered 25 Oct) delivered Mon 26 Oct — to complete the extended decking and shed base', s:'2026-10-26', ms:true},
+      {id:'V8', label:'V4 delivery — 193 remaining Ashwood boards plus screws and fixings, expected Wed 4 Nov', s:'2026-11-04', ms:true},
+      {id:'G3B', label:'Gate 3B — CLEARED Thu 22 Oct: Millboard signed off the substructure (25-year warranty secured)', s:'2026-10-22', ms:true},
+      {id:'2.5', label:'Lay Millboard decking — STARTED Mon 26 Oct; extended deck completes Mon 2 Nov; 193 more boards due Wed 4 Nov for the main deck, end TBC', s:'2026-10-26', e:'2026-11-04', est:true},
+      {id:'G4', label:'Gate 4 — decking sign-off, all sides', ms:true},
+      {id:'2.6', label:'New shed area — excavation + substructure (shed base + new decking area), end date TBC. Shed relocation follows once substructure is down, independent of board-laying', s:'2026-09-08', e:'2026-10-30'},
+      {id:'2.7', label:'Fence move, chimney side — boundary reclaimed from neighbour to enable the wider decking area, at new extended height. COMPLETE', s:'2026-09-11', e:'2026-09-11'},
+      {id:'2.8', label:'Electrics first fix — Revolutional Electrical ran cables under the decking to the new shed area and for the extended-deck lighting — COMPLETE Thu 22 Oct', s:'2026-10-22', e:'2026-10-22'},
+      {id:'2.9', label:'New shed — materials delivered Wed 28 Oct, under construction', s:'2026-10-28', ms:true},
+      {id:'2.10', label:'New shed construction — nearly built 30 Oct; finishes Tue 3 Nov', s:'2026-10-28', e:'2026-11-03', est:true},
+      {id:'2.11', label:'Electrics final fix and light fittings — Revolutional Electrical return Thu 12 Nov', s:'2026-11-12', e:'2026-11-12', est:true},
+      {id:'3.7', label:'Three new grates, side of the house (extra work) — Luke, later date'},
+      {id:'3.1', label:'Driveway channel — COMPLETE Wed 14 Oct (half a day; water-softener discharge connected to natural drainage)', s:'2026-10-14', e:'2026-10-14'},
+      {id:'G5', label:'Project completion — final sign-off', ms:true},
+    ],
+    floating: [
+      ['3.3','Fence spurring, side (b)','propped temporarily, not blocking substructure work — fix deferred to wet weather'],
+      ['3.4','Tree / bush clearing','external company, outside project'],
+      ['3.5','Fence relocation','after external tree works + TPO decision'],
+      ['3.6','Skip 2','triggered by Luke\'s request when decking needs it'],
+      ['V2','V4 Phase 2 — remaining decking boards','ordered on request, not before decking (a) underway'],
+      ['V3','V4 Phase 3 — extra subframe screws','ordered as Luke requested — complete'],
+      ['T1','TPO appeal decision','date TBC']
+    ]
+  };
+
+  var LABEL_W = 168, WEEK_W = 46;
+  var el = document.getElementById('gantt');
+  el.style.gridTemplateColumns = LABEL_W + 'px repeat(' + G.weeks + ',' + WEEK_W + 'px)';
+
+  function wk(i){ var b=G.weekStart; return new Date(b.getFullYear(), b.getMonth(), b.getDate() + i*7); }
+  function isHol(i){
+    var d = wk(i), m = ('0'+(d.getMonth()+1)).slice(-2), day = ('0'+d.getDate()).slice(-2);
+    return G.holidays.indexOf(d.getFullYear()+'-'+m+'-'+day) > -1;
+  }
+  function fmt(d){ return d.getDate() + ' ' + ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]; }
+
+  // header row
+  var h = document.createElement('div');
+  h.className = 'g-cell g-head g-label'; h.textContent = 'Week commencing';
+  el.appendChild(h);
+  for (var i = 0; i < G.weeks; i++){
+    var c = document.createElement('div');
+    c.className = 'g-cell g-head'; c.textContent = fmt(wk(i));
+    el.appendChild(c);
+  }
+
+  var today = new Date(); today.setHours(0,0,0,0);
+
+  // body rows
+  G.rows.forEach(function(row){
+    if (row.phase){
+      var p = document.createElement('div');
+      p.className = 'g-cell g-label g-phase'; p.textContent = row.phase;
+      el.appendChild(p);
+      for (var i = 0; i < G.weeks; i++){
+        var c = document.createElement('div');
+        c.className = 'g-cell g-phase-fill';
+        el.appendChild(c);
+      }
+      return;
+    }
+    var lab = document.createElement('div');
+    lab.className = 'g-cell g-label' + (row.s ? '' : ' g-tbc');
+    lab.textContent = row.id + ' · ' + row.label + (row.s ? '' : '  (TBC)');
+    lab.title = row.label;
+    el.appendChild(lab);
+    if (!row.s){
+      for (var i = 0; i < G.weeks; i++){
+        var c = document.createElement('div');
+        c.className = 'g-cell' + (isHol(i) ? ' g-hol' : '');
+        el.appendChild(c);
+      }
+      return;
+    }
+    var s = new Date(row.s + 'T00:00:00');
+    var e = new Date((row.e || row.s) + 'T00:00:00');
+    for (var i = 0; i < G.weeks; i++){
+      var c = document.createElement('div');
+      var cls = 'g-cell';
+      var wStart = wk(i), wEnd = new Date(wStart.getFullYear(), wStart.getMonth(), wStart.getDate() + 6);
+      if (isHol(i)) cls += ' g-hol';
+      var isPast = wEnd < today;
+      if (s <= wEnd && e >= wStart && !isHol(i)) cls += row.ms ? ' g-ms' : ((row.est && !isPast) ? ' g-bar g-bar-est' : ' g-bar');
+      c.className = cls;
+      c.title = row.id + ' · ' + row.label + ' — ' + fmt(s) + (row.e && row.e !== row.s ? ' to ' + fmt(e) : '');
+      el.appendChild(c);
+    }
+  });
+
+  // floating pool
+  var fl = document.getElementById('gfloat');
+  G.floating.forEach(function(f){
+    var li = document.createElement('li');
+    li.innerHTML = '<strong>' + f[0] + ' · ' + f[1] + '</strong> — ' + f[2];
+    fl.appendChild(li);
+  });
+
+  // today line
+  var end = wk(G.weeks);
+  if (today >= G.weekStart && today < end){
+    var days = Math.round((Date.UTC(today.getFullYear(),today.getMonth(),today.getDate()) - Date.UTC(G.weekStart.getFullYear(),G.weekStart.getMonth(),G.weekStart.getDate())) / DAY);
+    var line = document.createElement('div');
+    line.className = 'g-today';
+    line.style.left = (LABEL_W + (days/7) * WEEK_W) + 'px';
+    el.appendChild(line);
+  }
+})();
+</script>
+</body>
+</html>
